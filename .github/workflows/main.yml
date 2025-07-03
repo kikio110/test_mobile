@@ -17,8 +17,9 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.23.0-9.0.pre'  # Versi beta resmi
+          flutter-version: '3.23.0-0.2.pre'
           channel: beta
+
 
 
 
