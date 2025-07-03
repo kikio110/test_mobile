@@ -1,0 +1,37 @@
+name: Test Mobile
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout source code
+      - uses: actions/checkout@v3
+
+      # Setup Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.2'
+
+      # Install Flutter dependencies
+      - name: Install Flutter Dependencies
+        run: flutter pub get
+
+      # Run Flutter Analyzer
+      - name: Analyze Dart Code
+        run: flutter analyze
+
+      # Run Unit/Widget Tests
+      - name: Run Flutter Tests
+        run: flutter test test/counter_test.dart
+
+      # Run Integration Test
+      - name: Run Integration Test
+        run: flutter test test/integration_test.dart
